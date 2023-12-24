@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- SweetAlert CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    <title>Login | M A Mujaheed Global Enterprise</title>
+</head>
+<style>
+.login-container{
+    width: 95%;
+    margin-left: 2.5%;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.company-logo{
+    cursor: pointer;
+}
+#icon{
+    color: blue;
+}
+</style>
+<body>
+    <div class="login-container">
+        <div class="company-logo"><img src="M A MUJAHEED Logo.png" alt="logo" height="150" width="150" style="border-radius: 30px;" title="Company logo"></div>
+        <div class="company-name">M A Mujaheed Global Enterprise</div>
+        <div class="details"></div>
+        <br><br>
+        <div class="form-group">
+            <ion-icon name="person-sharp" id="icon"></ion-icon> <label for="userid">User ID:</label>
+            <input type="text" name="userid" id="userid" placeholder="User ID" autofocus>
+            <p>Your Personal User ID Provided for you!</p>
+        </div>
+        <div class="form-group">
+            <ion-icon name="lock-closed-sharp" id="icon"></ion-icon> <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <p>Your Personal Identification Password Provided for you!</p>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="login" value="login" name="login" onclick="login()"><ion-icon name="log-in" id="icon"></ion-icon> LOGIN</button>
+        </div>
+        <div class="form-group">
+            <button type="reset" id="home" value="home" name="home"><ion-icon name="home" id="icon"></ion-icon> HOME</button>
+        </div>
+        <div class="forgot">
+            Forgot your <button type="button" id="f-username" value="f-username" name="f-username"><a href="#">Username?</a></button> | <button type="button" id="f-password" value="f-password" name="f-password"><a href="#">Password?</a></button>
+        </div>
+        <div class="footer">
+            &copy;Copyright @ M A Mujaheed Global Enterprise | Powered by <a href="https://wa.me/+2347046245050?text=Nice%20Website!">Mahdee Abubakar</a>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+      
+          // You can replace this with your authentication logic
+          if (username === 'user' && password === 'password') {
+            // SweetAlert success message
+            Swal.fire({
+              icon: 'success',
+              title: 'Login Successful!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          } else {
+            // SweetAlert error message
+            Swal.fire({
+              icon: 'error',
+              title: 'Login Failed',
+              text: 'Invalid username or password'
+            });
+          }
+        }
+      </script>
+</body>
+</html>
