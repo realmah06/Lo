@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD | HADIQATUS SIBYAN SCH OF SCI & QUR'AN</title>
+    <link rel="icon" href="logo.enc">
+    <link rel="stylesheet" href="dashboardstyle.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="logo.enc" height="80">
+        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li onclick="window.location.href='admin_dashboard.html'"><ion-icon name="home-outline"></ion-icon> Home</li>
+        <li><ion-icon name="download-outline"></ion-icon> Report</li>
+        <li id="popupli"><ion-icon name="invert-mode-outline"></ion-icon> Bank Transaction</li>
+
+        <div class="popup" id="popup">
+          <div class="popup-content">
+            <span class="close" id="close" style="font-size: 25px;">&times;</span> 
+            <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;font-size: 20px;">
+              <ion-icon name="invert-mode-outline"></ion-icon> Bank Transaction</h2>
+            <hr>
+            <input type="date" name="date" id="date">
+            <select id="transactionType" onchange="showFields()" style="float: right;width: 65%;margin-top: -55px;">
+              <option value="">-- Select Action --</option>
+                <option value="schoolFees">School Fees Payment</option>
+                <option value="paymentToStaff">Payment to Staff</option>
+                <option value="paymentToExpenses">Payment to Expenses</option>
+            </select>
+            <form id="transactionForm" style="display: inline-flex;">
+              <div id="schoolFeesFields" style="display:none;">
+                  <select name="term" id="term">
+                    <option value="">-- Select Term --</option>
+                    <option value="first term">First Term</option>
+                    <option value="second term">Second Term</option>
+                    <option value="third term">Third Term</option>
+                    <option value="yearly">Yearly</option>
+                  </select>
+                  <select name="class" id="class" required>
+                    <option value="">-- Select Class --</option>
+                    <option value="Nur 1">Nursery One</option>
+                    <option value="Nur 2">Nursery Two</option>
+                    <option value="Pri 1">Primary One</option>
+                    <option value="Pri 2">Primary Two</option>
+                    <option value="Pri 3">Primary Three</option>
+                    <option value="Pri 4">Primary Four</option>
+                    <option value="Pri 5">Primary Five</option>
+                    <option value="JSS 1">JSS 1</option>
+                    <option value="JSS 2">JSS 2</option>
+                    <option value="JSS 3">JSS 3</option>
+                  </select>
+                  <select name="student" id="student">
+                    <option value="">-- Select Student --</option>
+                    <option value="">Abubakar Isma'il</option>
+                    <option value="">Zulaihat</option>
+                  </select>
+                  <br><br>
+                  <select name="depositor" id="depositor" >
+                    <option value="">-- Depositor --</option>
+                    <option value="">Parent</option>
+                    <option value="">Guidiance</option>
+                    <option value="">By Self</option>
+                  </select>
+                  <select name="mode" id="mode">
+                    <option value="">-- Payment Mode --</option>
+                    <option value="">Cash</option>
+                    <option value="pos">POS</option>
+                    <option value="">Transfer to Jaiz Bank</option>
+                    <option value="">Transfer to First Bank</option>
+                  </select>
+                  <input type="number" name="amount" id="amount" placeholder="Amount">
+                  <input type="text" name="regno" id="regno" placeholder="REG NO">
+              </div>
+              <div id="paymentToStaffFields" style="display:none;">
+                <br><br>
+                  <label for="staffUsername">Staff Username:</label>
+                  <input type="text" id="staffUsername">
+              </div>
+              <div id="paymentToExpensesFields" style="display:none;">
+                <br><br>
+                  <label for="paymentAmount">Payment Amount:</label>
+                  <input type="number" id="paymentAmount" step="0.01">
+              </div>
+          </form>
+          </div>
+        </div>
+    </div>
+    <hr style="border: 1px solid;">
+ 
+</body>
+<script src="dashboardscript.js"></script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN | HADIQATUS SIBYAN SCH OF SCI & QUR'AN</title>
+    <link rel="stylesheet" href="STYLE.CSS">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.20/sweetalert2.min.css">
+    <link rel="icon" href="logo.enc">
+</head>
+<body>
+    <div class="login">
+        <center><img src="logo.enc" height="150"></center>
+        <h2>HADIQATUS SIBYAN SCHOOL OF <br> SCIENCE & QUR'AN</h2>
+        <p>Login</p>
+        <hr style="border: 2px solid rgb(37, 34, 8);width: 65%;">
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <br>
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <br>
+            <label for="password">Password</label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <br><br><br>
+            <button id="log-btn" onclick="login()" type="submit">Login</button>
+        </form><br>
+        <hr style="border: 2px solid rgb(37, 34, 8);width: 65%;">
+    </div>
+    <footer id="log-footer">
+        Copyright &copy; HADIQATUS SIBYAN SCH OF SCI & QUR'AN
+    </footer>
+</body>
+<script src="SCRIPT.JS"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.20/sweetalert2.min.js"></script>
+</html>
