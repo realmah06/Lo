@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Fees Form</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    h2{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: rgb(17, 90, 154);
+        text-align: center;
+    }
+    p{
+        font-size: 17px;
+        text-align: center;
+        font-style: italic;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    label{
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        float: left;
+    }
+    .forms{
+        margin-left: 15px;
+        text-align: center;
+        display: inline-block;
+    }
+    #date{
+        text-transform: uppercase;
+    }
+    input, select, textarea {
+        padding: 12px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        border: 1px solid #ccc;
+        width: 253px;
+        border-radius: 7px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    /* Print */
+    #printContent > h1{
+        text-align: center;
+        font-size: 15px;
+        color: rgb(5, 38, 110);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    #printContent > h2{
+        text-align: center;
+        font-size: 12px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    #printContent table {
+        margin: 0 auto;
+        width: 80%;
+        border-collapse: collapse;
+    }
+    #printContent th, #printContent td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    #printContent th {
+        background-color: #f2f2f2;
+    }
+</style>
+<body>
+
+<form id="schoolFeesForm">
+    <center><img src="logo.enc" alt="logo" height="120"></center>
+    
+   <h2>HADIQATUS SIBYAN SCH OF SCIENCE & QUR'AN</h2>
+   <p>School Fees Payment</p>
+   <select name="cashier" id="cashier" style="margin-left: 20px;width: 250px;">
+    <option value="">-- Cashier --</option>
+    <option value="Nusaiba Abubakar Mujahid">Nusaiba Abubakar</option>
+    <option value="Zahara'u Abubakar Mujahid">Zahara'u Abubakar</option>
+   </select>
+   <br><br>
+   <div class="forms">
+        <label for="date">Date:</label>
+        <br>
+        <input type="datetime-local" name="date" id="date" required>
+    </div>
+    <div class="forms">
+        <label for="studentName">Full Student Name:</label>
+        <br>
+        <input type="text" name="studentName" id="studentName" placeholder="Student Name">
+    </div>
+    <div class="forms">
+        <label for="sclass">Class:</label>
+        <br>
+        <select name="sclass" id="sclass" required>
+            <option value="">-- Select Class --</option>
+            <option value="Primary One">Primary One</option>
+            <option value="Primary Two">Primary Two</option>
+            <option value="Primary Three">Primary Three</option>
+            <option value="Primary Four">Primary Four</option>
+            <option value="Primary Five">Primary Five</option>
+            <option value="JSS 1">JSS 1</option>
+            <option value="JSS 2">JSS 2</option>
+            <option value="JSS 3">JSS 3</option>
+        </select>
+    </div>
+    <div class="forms">
+        <label for="breakdown">Breakdown Of Fee:</label>
+        <br>
+        <input type="number" name="breakdown" id="breakdown" placeholder="Breakdown Of Fee" oninput="calculateTotal()" required>
+    </div>
+        <div class="forms">
+            <label for="amount">Amount:</label>
+            <br>
+        <input type="number" name="amount" id="amount" placeholder="Amount" oninput="calculateTotal()" required step="0.01">
+    </div>
+    <div class="forms">
+        <label for="total">Total:</label>
+        <br>
+        <input type="number" name="total" id="total" placeholder="Total Fee" readonly>
+    </div>
+    <div class="forms">
+        <label for="paymode">Payment Mode:</label>
+        <br>
+        <select name="paymode" id="paymode">
+            <option value="">-- Select Payment Mode --</option>
+            <option value="First Bank">First Bank <i>(Hadiqatussibyan)</i></option>
+            <option value="First Bank">First Bank <i>(Abubakar Usman)</i></option>
+            <option value="Jaiz Bank">Jaiz Bank <i>(Hadiqatussibyan)</i></option>
+            <option value="Cash">Cash</option>
+        </select>
+    </div>
+    <div class="forms">
+        <label for="depositor">Depositor:</label>
+        <br>
+        <input type="text" name="depositor" id="depositor" placeholder="Depositor" required>
+    </div>
+    <br><br>
+    <div class="forms">
+        <label for="comment">Any Comment:</label>
+        <br>
+        <textarea name="comment" id="comment"></textarea>
+    </div>
+   <br>
+    <button type="button" onclick="saveData()">Save</button>
+</form>
+
+<div id="printContent" style="display: none;">
+    <img src="logo.enc" height="100">
+    <h1>HADIQATUS SIBYAN SCH OF SCI & QUR'AN</h1>
+    <h2><i>No 03 Raudha Road Gwargwaje Junction Behind Shawai Filling station.</i></h2>
+    <hr>
+    <p>Cash Receipt</p>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td>Cashier</td>
+            <td id="cashierPrint"></td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td id="datePrint"></td>
+        </tr>
+        <tr>
+            <td>Student Name</td>
+            <td id="studentNamePrint"></td>
+        </tr>
+        <tr>
+            <td>Class</td>
+            <td id="classPrint"></td>
+        </tr>
+        <tr>
+            <td>Breakdown of Fee</td>
+            <td id="breakdownPrint"></td>
+        </tr>
+        <tr>
+            <td>Amount</td>
+            <td id="amountPrint"></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td id="totalPrint"></td>
+        </tr>
+        <tr>
+            <td>Payment Mode</td>
+            <td id="paymodePrint"></td>
+        </tr>
+        <tr>
+            <td>Depositor</td>
+            <td id="depositorPrint"></td>
+        </tr>
+        <tr>
+            <td>Comment</td>
+            <td id="commentPrint"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+function calculateTotal() {
+    // Get the values of breakdown and amount
+    var breakdown = parseFloat(document.getElementById("breakdown").value);
+    var amount = parseFloat(document.getElementById("amount").value);
+
+    // Calculate the total
+    var total = isNaN(breakdown) ? 0 : breakdown + (isNaN(amount) ? 0 : amount);
+
+    // Display the total in the total input field
+    document.getElementById("total").value = total.toFixed(2);
+}
+
+function saveData() {
+    // Get form data
+    var cashier = document.getElementById('cashier').value;
+    var date = document.getElementById('date').value;
+    var studentName = document.getElementById("studentName").value;
+    var sclass = document.getElementById('sclass').value;
+    var breakdown = parseFloat(document.getElementById('breakdown').value);
+    var amount = parseFloat(document.getElementById("amount").value);
+    var total = parseFloat(document.getElementById('total').value);
+    var paymode = document.getElementById('paymode').value;
+    var depositor = document.getElementById('depositor').value;
+    var comment = document.getElementById('comment').value;
+
+    // Display receipt content in tabular form
+    document.getElementById("cashierPrint").textContent = cashier;
+    document.getElementById("datePrint").textContent = date;
+    document.getElementById("studentNamePrint").textContent = studentName;
+    document.getElementById("classPrint").textContent = sclass;
+    document.getElementById("breakdownPrint").textContent = breakdown;
+    document.getElementById("amountPrint").textContent = '₦' + amount.toFixed(2);
+    document.getElementById("totalPrint").textContent = '₦' + total.toFixed(2);
+    document.getElementById("paymodePrint").textContent = paymode;
+    document.getElementById("depositorPrint").textContent = depositor;
+    document.getElementById("commentPrint").textContent = comment;
+
+    // Display SweetAlert2 dialog for confirmation
+    Swal.fire({
+        title: 'Confirm Save',
+        text: 'Are you sure you want to save this transaction?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, save it!',
+        cancelButtonText: 'No, cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If confirmed, save data and show success message
+            saveToLocal(studentName, total);
+            Swal.fire({
+                title: 'Saved!',
+                text: 'Transaction saved successfully.',
+                icon: 'success'
+            }).then(() => {
+                printReceipt();
+            });
+        }
+    });
+}
+
+function saveToLocal(studentName, total) {
+    // Save data locally (for demonstration, you can use localStorage or other methods)
+    var dataToSave = {
+        studentName: studentName,
+        total: total
+    };
+    // For demonstration, alert the saved data
+    alert("Data Saved Locally:\n\n" + JSON.stringify(dataToSave));
+}
+
+function printReceipt() {
+    // Display printContent div
+    document.getElementById("printContent").style.display = "block";
+    // Print the content
+    window.print();
+    // Hide printContent div after printing
+    document.getElementById("printContent").style.display = "none";
+}
+</script>
+
+</body>
+</html>
