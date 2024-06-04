@@ -4,22 +4,313 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HADIQATUS SIBYAN SCH OF SCI & QUR'AN</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="STYLE.CSS">
-    <link rel="icon" href="logo.enc">
+    <link rel="icon" href="Logo.enc">
 </head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+/* Dashboard CSS Start */
+marquee{
+    background-color: #2d2a2a;
+    padding: 7px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.top-header{
+    background-color: #2d2a2a;
+    padding: 15px;
+    color: #fff;
+}
+.top-header > ul li{
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+.top-header > ul li:hover{
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.active{
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+}
+/* Contents CSS Start*/
+.contents{
+    border: 1px solid #ccc;
+    height: 65vh;
+    width: 98%;
+    text-align: center;
+    margin-left: 1%;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+#about-us-content, #student-login-content, #staff-login-content{
+    display: none;
+    position: relative;
+}
+#home-content > img{
+    cursor: pointer;
+}
+#home-content > h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #103538;
+}
+#home-content > h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 10px 10px;
+    font-size: 21px;
+}
+#home-content > h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 10px;
+}
+#home-content > h4{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}
+#about-us-content{
+    text-align: left;
+    margin:10px 20px;
+}
+#about-us-content > h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#about-us-content > p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 5px;
+}
+#student-login-content > h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #103538;
+    margin-top: 5px;
+}
+#student-login-content > #regno, #username, #password{
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+button{
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    background-color: #103538;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+button:hover{
+    background-color: #2d2a2a;
+}
+#staff-login-content > h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #103538;
+    margin-top: 5px;
+}
+#staff-login-content >#usernamee, #passwordd{
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* Contents CSS End */
+/* Footer CSS Start */
+footer{
+    background-color: #2d2a2a;
+    color: #fff;
+    padding: 25px;
+    text-align: center;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 44.4px;
+}
+footer > a{
+    color: #8e8a8a;
+}
+footer > a:hover{
+    text-decoration: underline;
+    color: #fff;
+}
+/* Footer CSS End */
+/* Dashboard CSS End */
+</style>
 <body>
-    <div class="dashboard">
-        <img src="logo.enc" height="150" ondblclick="window.location.href='LOGIN.html'">
-        <marquee><h1>حديقة الصبيان لتحفيظ القرءان الكريم والعلوم</h1></marquee>
-        <marquee behavior="right" direction="right"><h2>HADIQATUS SIBYAN SCHOOL OF SCIENCE & QUR'AN</h2></marquee>
-        <span class="address">No 03 Raudha Road By Gwargwaje Junction, Behind Shawai Filling Station, Zaria Kaduna State Nigeria.</span><br>
-        <span class="contact">E-mail: <a href="mailto:hadiqatussibyan07@gmail.com">hadiqatussibyan07@gmail.com</a> Phone Number: <a href="tel:+2348034520811">+2348034520811</a>, <a href="tel:+2349035309547">+2349035309547</a></span>
+    <!--Dashboard HTML Start-->
+        <marquee>Welcome to HADIQATUS SIBYAN SCHOOL OF SCIENCE & QUR'AN</marquee>
+        <div class="top-header">
+            <ul>
+                <li id="home" class="active"><ion-icon name="home"></ion-icon> &nbsp; Home</li>
+                <li id="about-us"><ion-icon name="information-circle"></ion-icon> &nbsp; About Us</li>
+                <li id="student-login"><ion-icon name="people-circle"></ion-icon> &nbsp; Student Login</li>
+                <li id="staff-login"><ion-icon name="person-circle"></ion-icon> &nbsp; Staff Login</li>
+            </ul>
+        </div>
+        <!--Contents Start HTML-->
+        <div class="contents">
+            <div id="home-content">
+                    <br><br><br><br>
+                    <img src="Logo.enc" alt="logo" height="150">
+                    <h1>HADIQATUS SIBYAN SCHOOL OF SCIENCE & QUR'AN</h1>
+                    <h2><ion-icon name="location"></ion-icon> Address: No 03 Raudha road behind shawai filling station Zaria, Kaduna State Nigeria.</h2>
+                    <h3><ion-icon name="mail"></ion-icon> Email: <a href="mailto:hadiqatussibyan07@gmail.com">hadiqatussibyan07@gmail.com</a> || <ion-icon name="call"></ion-icon> Call: <a href="tel:+2348034520811">08034520811</a>, <a href="tel:+2347040445210">07040445210</a>.</h3>
+                    <h4>Motto: Knowledge is light <ion-icon name="sunny"></ion-icon>    </h4>
+            </div>
+            <div id="about-us-content">
+                <br><br>
+                <h2>About Us</h2>
+                <p>Welcome to <b>HADIQATUS SIBYAN SCHOOL OF SCIENCE & QUR'AN</b>, a leading educational institution committed to providing a nurturing and inclusive learning environment for students of all backgrounds.</p>
+                <br>
+                <h2>Our Mission</h2>
+                <p>Our mission is to nurture well-rounded individuals who excel academically, embody Islamic values, and contribute positively to society. We strive to create an environment where students can achieve their full potential while staying true to their faith.</p>
+                <br>
+                <h2>Our Vision</h2>
+                <p>We envision a future where our students are leaders and role models in their communities, equipped with knowledge, wisdom, and a strong moral compass. Our goal is to inspire a love for lifelong learning and a commitment to upholding Islamic principles.</p>
+                <br>
+                <h2>Contact Us</h2>
+                <p>We invite you to visit our school, meet our staff, and experience our unique educational environment.</p>
+                <br>
+                <p>Thank you for your interest in <b>HADIQATUS SIBYAN SCHOOL OF SCIENCE & QUR'AN</b>. We look forward to welcoming you to our vibrant and dynamic learning community!</p>
+            </div>
+            <div id="student-login-content">
+                <h2>Student Login</h2>
+                <br>
+                <input type="text" name="regno" id="regno" placeholder="REG NO" required><br><br>
+                <input type="text" name="username" id="username" placeholder="Username" required><br><br>
+                <input type="password" name="password" id="password" class="password-input" placeholder="Password" required>
+                <br><br>
+                <input type="checkbox" name="togglePassword" id="togglePassword" onchange="togglePassword()"> Show Password / Hide Password
+                <br><br>
+                <button onclick="Student()" type="button">Login</button>
+            </div>
+            <div id="staff-login-content">
+                <br><br>
+                <h2>Staff Login</h2>
+                <br>
+                <input type="text" name="usernamee" id="usernamee" placeholder="Username" required><br><br>
+                <input type="password" name="passwordd" id="passwordd" class="password-input" placeholder="Password" required>
+                <br><br>
+                <input type="checkbox" name="togglePassword" id="togglePassword" onchange="togglePassword()"> Show Password / Hide Password
+                <br><br>
+                <button onclick="Staff()" type="button">Login</button>
+            </div>
+        </div>
+        <!--Contents Start End-->
+        <!--Footer HTML Start-->
         <footer>
-            Copyright &copy; Hadiqatus Sibyan School Of Science & Qur'an
+            Copyright&copy; HADIQATUS SIBYAN SCHOOL OF SCIENCE & QUR'AN 2024. || Powered by: <a href="mailto:mahdeeabubakar4787@gmail.com">Mahadi Abubakar Mujahid</a>
         </footer>
-    </div>
+        <!--Footer HTML End-->
+    <!--Dashboard HTML End-->
 </body>
-<script src="SCRIPT.JS"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>       
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    /* Content Script */
+var home = document.getElementById('home');
+var aboutus = document.getElementById('about-us');
+var studentlogin = document.getElementById('student-login');
+var stafflogin = document.getElementById('staff-login');
+var homecontent = document.getElementById('home-content');
+var aboutuscontent = document.getElementById('about-us-content');
+var studentlogincontent = document.getElementById('student-login-content');
+var stafflogincontent = document.getElementById('staff-login-content');
+
+home.onclick = function(){
+    homecontent.style.display = 'block';
+    aboutuscontent.style.display = 'none';
+    stafflogincontent.style.display = 'none';
+    studentlogincontent.style.display = 'none';
+}
+
+aboutus.onclick = function(){
+    homecontent.style.display = 'none';
+    aboutuscontent.style.display = 'block';
+    stafflogincontent.style.display = 'none';
+    studentlogincontent.style.display = 'none';
+}
+
+studentlogin.onclick = function(){
+    homecontent.style.display = 'none';
+    aboutuscontent.style.display = 'none';
+    studentlogincontent.style.display = 'block';
+    stafflogincontent.style.display = 'none';
+}
+
+stafflogin.onclick = function(){
+    homecontent.style.display = 'none';
+    aboutuscontent.style.display = 'none';
+    studentlogincontent.style.display = 'none';
+    stafflogincontent.style.display = 'block';
+}
+
+
+// Toggle Eye //
+function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleCheckbox = document.getElementById('togglePassword');
+
+    if (toggleCheckbox.checked) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+
+// Login Student //
+function Student(){
+    var regno = document.getElementById('regno').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    if(regno === 'HSSSQ/001/2024' && username === 'Mahadi' && password === '4787@'){
+        alert(`Dear ${username}, You have successfully login to Students Dashboard`);
+        window.location.href = "student dashboard.html"
+    } else {
+        alert('Wrong Input!')
+    }
+}
+
+// Login Staff //
+function Staff(){
+    var usernamee = document.getElementById('usernamee').value;
+    var passwordd = document.getElementById('passwordd').value;
+
+    if(usernamee === 'Sulaiman' && passwordd === '0000'){
+        alert(`Dear ${usernamee}, You have successfully login to Admin Dashboard`);
+        window.location.href = "Admin dashboard.html"
+    }else if(usernamee === 'Bashir' && passwordd === '0001'){
+        alert(`Dear ${usernamee} You have Successfully login to Subadmin Dashboard`);
+        window.location.href = "Subadmin dashboard.html"
+    }else if(usernamee === 'Zaharau' && passwordd === '0002'){
+        alert(`Dear ${usernamee} You have Successfully login to Accountant Dashboard`);
+        window.location.href = "Accountant dashboard.html"
+    }else if(usernamee === 'Abdul' && passwordd === '0003'){
+        alert(`Dear ${usernamee} You have Successfully login to Exam Officer Dashboard`);
+        window.location.href = "Exam Officer dashboard.html"
+    }else if(usernamee === 'Mahadi' && passwordd === '0004'){
+        alert(`Dear ${usernamee} You have Successfully login to Staff Dashboard`);
+        window.location.href = "Staff dashboard.html"
+    }
+     else {
+        alert('Wrong Input!')
+    }
+}
+</script>
 </html>
