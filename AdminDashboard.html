@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #last-login-details{
+            background-color: rgb(22, 22, 167);
+            color: #fff;
+            padding: 10px
+        }
+        .side-bar{
+            background-color: rgb(23, 40, 40);
+            color: #fff;
+            width: 250px;
+            height: 91.7vh;
+            position: fixed;
+            padding: 10px;
+        }
+        .side-bar > ul li{
+            list-style: none;
+            font-size: 20px;
+            cursor: pointer;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-bottom: 20px;
+        }
+        .side-bar > ul li:hover{
+            background-color: #5b5656;
+            padding: 5px;
+            transition: 0.5s;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="last-login-details"></div>
+    <div class="side-bar">
+        <ul>
+            <li><ion-icon name="home"></ion-icon> Home</li>
+            <li><ion-icon name="server"></ion-icon> Bank Account</li>
+            <li><ion-icon name="storefront"></ion-icon> Store 1</li>
+            <li><ion-icon name="storefront"></ion-icon> store 2</li>
+        </ul>
+    </div>
+    <script>
+        // Display Last Login Details
+        document.addEventListener("DOMContentLoaded", function() {
+            var lastLoginUsername = localStorage.getItem('lastLoginUsername');
+            var lastLoginTime = localStorage.getItem('lastLoginTime');
+            var lastLoginDepartment = localStorage.getItem('lastLoginDepartment');
+            var lastLoginDetails = document.getElementById('last-login-details');
+
+            if (lastLoginUsername && lastLoginTime && lastLoginDepartment) {
+                lastLoginDetails.innerHTML = `<ion-icon name="person-circle"></ion-icon> User: ${lastLoginUsername} || <ion-icon name="layers"></ion-icon> Dept: ${lastLoginDepartment} || <ion-icon name="time"></ion-icon> Last Login: ${lastLoginTime}`;
+            } else {
+                lastLoginDetails.innerHTML = 'No previous login details available.';
+            }
+        });
+    </script>
+</body>
+</html>

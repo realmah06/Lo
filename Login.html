@@ -6,8 +6,11 @@
     <title>AMFCO Block Industry</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="logo.png">
+     <!-- Include SweetAlert2 from CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
+    /* CSS styles as per your existing setup */
     /* Start */
     body, html {
     margin: 0;
@@ -127,9 +130,12 @@ footer > a{
     <div id="preloader">
         <img src="logo.png" alt="Loading...">
     </div>
-    <div class="centered-div">
+    <div class="centered-div" id="content" style="display: none;">
         <center><img src="logo.png" id="logo" alt="logo"></center>
-        <h1>AMFCO Block Industry</h1> <h2>Login</h2> <i style="font-weight: bold;"> for official use only.</i><i style="font-family: Georgia, 'Times New Roman', Times, serif;float: right;">AMFCO Software Version 2.1 (V).</i>
+        <h1>AMFCO Block Industry</h1>
+        <h2>Login</h2>
+        <i style="font-weight: bold;">for official use only.</i>
+        <i style="font-family: Georgia, 'Times New Roman', Times, serif; float: right;">AMFCO Software Version 2.1 (V).</i>
         <hr>
         <br>
         <div class="forms">
@@ -152,7 +158,9 @@ footer > a{
             <br>
             <input type="password" name="password" id="password" placeholder="Password" required>
         </div>
-        <button onclick="Login()" id="btn">Login</button><span style="float: right;margin-top: 5px;margin-left: 5px;">Keep Me Logged In</span><input type="checkbox" name="remember-me" id="remember-me" style="float: right;margin-top: 8px;">
+        <button onclick="Login()" id="btn">Login</button>
+        <span style="float: right; margin-top: 5px; margin-left: 5px;">Keep Me Logged In</span>
+        <input type="checkbox" name="remember-me" id="remember-me" style="float: right; margin-top: 8px;">
         <p id="result"></p>
         <br>
         <a href="https://wa.me/+2348064381174?text=Hello+Sir!+I+forgot+my+login+details+for+AMFCO+Block+Industry!">Forgot my details!</a>
@@ -161,39 +169,66 @@ footer > a{
             Copyright&copy; <b>AMFCO Block Industry 2024.</b> Powered by <a href="https://wa.me/+2347046245050?text=Hello+Sir!">Mahadi Abubakar Mujahid</a>
         </footer>
     </div>
-</body>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    // Wait for 5 seconds before hiding the preloader
-    setTimeout(function() {
-        // Hide the preloader
-        document.getElementById('preloader').style.display = 'none';
-        // Show the main content
-        document.getElementById('content').style.display = 'block';
-    }, 1000); // 5000 milliseconds = 5 seconds
-});
-
-    function Login(){
-        var department = document.getElementById('department').value;
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-        var success = document.getElementById('success');
-        var error = document.getElementById('error');
-
-        if(department === 'Admin' && username === 'aliyu' && password === '1234'){
-            result.textContent = `Welcome back,   ${username}`
-            window.location.href="Admin Dashboard.html";
-        } else if (department === 'Subadmin' && username === 'musaddiq' && password === '4321'){
-            result.textContent = 'Welcome back' + username
-            window.location.href= `Welcome back,   ${username}`
-        } else if (department === 'Sales' && username === 'musaddiq' && password === '4321'){
-            result.textContent = 'Welcome back' + username
-            window.location.href= `Welcome back,   ${username}`
-        } else {
-            result.textContent = "Error"
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Wait for 1 second before hiding the preloader for demonstration
+            setTimeout(function() {
+                // Hide the preloader
+                document.getElementById('preloader').style.display = 'none';
+                // Show the main content
+                document.getElementById('content').style.display = 'block';
+            }, 1000); // 1000 milliseconds = 1 second (adjust as needed)
+        });
+    
+        function Login() {
+            var department = document.getElementById('department').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            // Basic authentication check
+            var validLogin = false;
+    
+            if (department === 'Admin' && username === 'Aliyu' && password === '1234') {
+                validLogin = true;
+            } else if (department === 'Subadmin' && username === 'musaddiq' && password === '4321') {
+                validLogin = true;
+            } else if (department === 'Sales' && username === 'musaddiq' && password === '4321') {
+                validLogin = true;
+            }
+    
+            if (validLogin) {
+                // Save login information to local storage
+                localStorage.setItem('lastLoginDepartment', department);
+                localStorage.setItem('lastLoginUsername', username);
+                localStorage.setItem('lastLoginTime', new Date().toLocaleString());
+    
+                // Display SweetAlert for successful login
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Welcome!',
+                    text: `Welcome back, ${username}! You are now logged in.`,
+                    confirmButtonText: 'Proceed',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    // Redirect to the corresponding dashboard
+                    if (result.isConfirmed) {
+                        window.location.href = department + "Dashboard.html";
+                    }
+                });
+            } else {
+                // Display SweetAlert for incorrect login
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Incorrect username or password. Please try again.',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false
+                });
+            }
         }
-    }
-</script>
+    </script>
+    
+</body>
 </html>
