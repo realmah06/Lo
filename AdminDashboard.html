@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="Logo.jpg">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
         }
+        
         #last-login-details {
             background-color: rgb(22, 22, 167);
             color: #fff;
@@ -23,7 +26,7 @@
         }
         .side-bar {
             background-color: black;
-            height: auto;
+            height: 100vh;
             padding: 10px;
             width: 250px;
             color: #fff;
@@ -90,16 +93,13 @@
         }
         .contents {
             border: 1px solid #ccc;
-            margin: 10px;
             padding: 10px;
             border-radius: 5px;
-            flex: 1;
             display: inline-flex;
             box-sizing: border-box;
-            top: 0;
-            width: 100%;
-            z-index: 0;
-            margin-left: 280px;
+            background-color: #fff;
+            width: 81%;
+            margin-left: 265px;
         }
         @media screen and (max-width: 790px) {
             .contents {
@@ -148,71 +148,153 @@
             display: none;
             width: 100%;
         }
-        .tabs{
-            width: 100%;
+        .tab{
+            padding: 17.5px;
             display: inline-flex;
-        }
-        .tab2{
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 45%;
-            margin: 10px;
-            align-items: center;
-            border-radius: 10px;
             cursor: pointer;
-            font-size: 23px;
-            font-weight: bold;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-        .tab1{
+            color: #7b7979;
+            border-radius: 5px;
+            margin: 8.5px;
             border: 1px solid #ccc;
-            padding: 10px;
-            width: 45%;
-            margin: 10px;
-            align-items: center;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 23px;
-            font-weight: bold;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
         }
-        .tab1:hover{
-            background-color: #ccc;
-        }.tab2:hover{
-            background-color: #ccc;
+        .tab:hover{
+            background-color: #f4f4f4;
+            color: #000;
+        }
+        @media screen and (max-width: 520px){
+            .tab{
+                display: inline-block;
+                margin: 10px;
+                width: 87.5%;
+                text-align: center;
+                color: #7b7979;
+                font-size: 18px;
+                margin-top: 5px;
+            }
+            .tab:hover{
+                color: #000;
+            }
         }
         .tabcontents{
-            border: 1px solid #ccc;
-            padding: 10px;
+            width: 100%;
+            height: 51.1vh;
+            overflow: scroll;
+            padding: 5px;
+            border: 2px solid #817e7e;
+            position: sticky;
+            border-radius: 5px;
         }
-        .transactions, .balances{
+        #balancescontent, #salesummarycontent, #transummarycontent, #deliverycontent, #transportationcontent{
             display: none;
         }
-        .balances-container{
-            width: 45%;
-            height: 30vh;
-            padding: 5px;
-            border-radius: 7px;
-            border: 1px solid #ccc;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            @keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+    .bar-head, #close{
+        display: inline-flex;
+    }
+    #close{
+        cursor: pointer;
+        font-size: 20px;
+        float: right;
+        align-items: center;
+    }
+    .bar-head{
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: #0c252d;
+        padding: 5px;
+    }
+    #bank-register, #customerregister{
+        display: none;
+    }
+    .registerform{
+        display: none;
+    }
+    .registerform > h1{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 18px;
+    }
+    .register-form > label{
+        display: block;
+        margin: 5px;
+        font-size: 18px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: bold;
+    }
+    .register-form > select{
+        width: 300px;
+        font-size: 18px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        border: 1px solid #a7a3a3;
+        padding: 4px;
+        border-radius: 3px;
+    }
+    .ccc{
+        display: inline-flex;
+    }
+    #balancescontainer{
+        border: 2px solid #585454;
+        height: 35vh;
+        overflow: auto;
+        width: 550px;
+        margin: 25px;
+        border-radius: 7px;
+    }
+    @media screen and (max-width: 1500px){
+        .ccc{
+            display: block;
         }
+        #balancescontainer{
+            width: 90%;
+            margin: 5%;
+            font-size: 15px;
+            
+        }
+    }
+    .details-container{
+        margin: 3px;
+    }
+    .details-container > h3{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .ddd{
+        margin: 5px;
+    }
+    #bankDetails{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
     </style>
 </head>
-<body>
+<body id="body">
     <div id="last-login-details"></div>
     <div class="menu-button" title="Show Menu Bar"><ion-icon name="menu" id="menushow"></ion-icon></div>
     <div class="AMFCO">
         <div class="side-bar" id="sidebar">
             <span id="exit" style="float: right; cursor: pointer; font-size: 20px;" title="Close Menu Bar"><ion-icon name="close-circle"></ion-icon></span>
-            <img src="logo.png" alt="logo" height="40" style="border-radius: 10px;">
+            <img src="logo.jpg" id="maha" alt="logo" height="40" style="border-radius: 10px;">
             <ul>
                 <hr>
                 <li onclick="ShowDashboard()" id="dashboardbtn"><ion-icon name="server"></ion-icon> Dashboard</li>
                 <li onclick="ShowBank()" id="bankbtn"><ion-icon name="arrow-forward-circle"></ion-icon> Bank Transaction</li>
                 <li onclick="ShowAdjustment()" id="adjustmentbtn"><ion-icon name="shield-checkmark"></ion-icon> Adjustment</li>
                 <br><hr>
-                <li onclick="ShowBlock()" id="blockbtn"><ion-icon name="duplicate"></ion-icon> Block Production</li>
-                <li onclick="ShowStore()" id="storebtn"><ion-icon name="storefront"></ion-icon> Store</li>
+                <li onclick="showSupply()" id="blockbtn"><ion-icon name="duplicate"></ion-icon> Supply</li>
+                <li onclick="showInventory()" id="storebtn"><ion-icon name="storefront"></ion-icon> Invenory</li>
                 <li onclick="ShowSales()" id="salesbtn"><ion-icon name="send"></ion-icon> Sales</li>
                 <br><hr>
                 <li onclick="ShowRegister()" id="registerbtn"><ion-icon name="add-circle"></ion-icon> Registration</li>
@@ -221,7 +303,7 @@
                 <br><hr>
                 <li style="margin-top: 30px;"><a href="Login.html"><ion-icon name="power"></ion-icon> Logout</a></li>
             </ul>
-            <p style="text-align: center; color: #7b7979; cursor: pointer;">Copyright&copy; AMFCO 2024.</p>
+            <p style="text-align: center; color: #7b7979; cursor: pointer;">Copyright&copy; M A Mujaheed 2024.</p>
         </div>
         <div class="contents" id="content">
             <!-- Dashboard -->
@@ -231,37 +313,74 @@
                 <div class="summary">
                 </div>
                 <hr>
-                <div class="tabs">
-                    <div class="tab1" onclick="showBalances()" id="tab1">
-                        <ion-icon name="save" style="font-size: 50px;"></ion-icon>
-                        <br>
-                        Chart of Accounts 
-                    </div>
-                    <div class="tab2" onclick="ShowTransaction()" id="tab2">
-                        <ion-icon name="swap-horizontal" style="font-size: 50px;"></ion-icon>
-                        <br>
-                        Transaction Summary <p id="currentDate"></p>
+                    <div class="tabs">
+                        <div class="tab" id="balances" onclick="ShowBalances()">
+                            <ion-icon name="analytics"></ion-icon> &nbsp;Account Balances
+                        </div>
+                        <div class="tab" id="salesummmary" onclick="ShowSalesummary()">
+                            <ion-icon name="file-tray-full"></ion-icon> &nbsp; Sales Summary
+                        </div>
+                        <div class="tab" id="transummary" onclick="Showtransummary()">
+                            <ion-icon name="bookmarks"></ion-icon> &nbsp; Account Transactions Summary
+                        </div>
+                        <div class="tab" id="delivery" onclick="Showdelivery()">
+                            <ion-icon name="bicycle"></ion-icon> &nbsp; Delivery
+                        </div>
+                        <div class="tab" id="transportation" onclick="Showtransportation()">
+                            <ion-icon name="airplane"></ion-icon> &nbsp;Transportation
+                        </div>
                     </div>
                     <div class="tabcontents" id="tabcontents">
-                        <!--Balances-->
-                        <div class="balances" id="balances">
-                            <p class="hc"><ion-icon name="save"></ion-icon></ion-icon> &nbsp; Chart of Accounts</p><p id="currentDate" style="float: right;"></p>
-                            <hr>
-                            <div class="balances-container">
-                                <div class="hc"><ion-icon name="arrow-forward-circle"></ion-icon> Bank Balances</div>
-                            <hr>
-                            <p id="person"><span id="account-name"></span> &nbsp;&nbsp; <span id="bank-name"></span> &nbsp;&nbsp; <span id="amount"></span></p>
-                            <hr>
+                        <div id="balancescontent">
+                            <div class="bar-head"><ion-icon name="analytics"></ion-icon> &nbsp;Balances</div>
+                            <span onclick="Closealltab()" id="close"><ion-icon name="close-circle"></ion-icon></span>
+                            <hr     style="width: 100%  ;">
+                            <div class="ccc">
+                            <div class="bankbalances" id="balancescontainer">
+                            <div class="details-container" id="detailsContainer">
+                                <h3><ion-icon name="server"></ion-icon> Bank Balances</h3>
+                                <hr>
+                                <div class="ddd">
+                                <div id="bankDetails"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="bankbalances" id="balancescontainer">
+                                <div class="details-container" id="detailsContainer">
+                                    <h3>Registered Bank Details</h3>
+                                    <div id="bankDetails"></div>
+                                </div>
+                                </div>
+                                <div class="bankbalances" id="balancescontainer">
+                                    <div class="details-container" id="detailsContainer">
+                                        <h3>Registered Bank Details</h3>
+                                        <div id="bankDetails"></div>
+                                    </div>
+                                    </div>
                             </div>
                         </div>
-                        <!--Balances-->
-                        <!--Transaction-->
-                        <div class="transactions" id="transactions">
-                            <p class="hc"> <ion-icon name="swap-horizontal"></ion-icon> &nbsp; Transaction Summary</p>
+                        <div id="salesummarycontent">
+                            <div class="bar-head"><ion-icon name="file-tray-full"></ion-icon> &nbsp;Sales Summary</div>
+                            <span onclick="Closealltab()" id="close"><ion-icon name="close-circle"></ion-icon></span>
+                            <hr>
                         </div>
-                        <!--Transaction-->
+                        <div id="transummarycontent">
+                            <div class="bar-head"><ion-icon name="bookmarks"></ion-icon> &nbsp; Transaction  Summary</div>
+                            <span onclick="Closealltab()" id="close"><ion-icon name="close-circle"></ion-icon></span>
+                            <hr>
+                        </div>
+                        <div id="deliverycontent">
+                            <div class="bar-head"><ion-icon name="bicycle"></ion-icon> &nbsp; Delivery</div>
+                            <span onclick="Closealltab()" id="close"><ion-icon name="close-circle"></ion-icon></span>
+                            <hr>
+                        </div>
+                        <div id="transportationcontent">
+                            <div class="bar-head"><ion-icon name="airplane"></ion-icon> &nbsp; Transportation </div>
+                            <span onclick="Closealltab()" id="close"><ion-icon name="close-circle"></ion-icon></span>
+                            <hr>
+                        </div>
                     </div>
-                </div>
             </div>
             <!-- Dashboard End -->
             <div id="bank-contents">
@@ -281,26 +400,65 @@
                 Sales
             </div>
             <div id="register-contents">
-                Register
-                <div class="form-container">
-                    <h2>Fill the Form</h2>
-                    <form id="myForm">
-                        <label for="name">Username:</label>
-                        <input type="text" id="name" name="name" required>
-                
-                        <label for="email">Email:</label>
-                        <input type="number" id="amount" name="amount" required>
-                
-                        <label for="department">Department:</label>
-                        <select id="bank" name="bank" required>
-                            <option value="Sales">Sales</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Development">Development</option>
-                            <option value="HR">HR</option>
-                        </select>
-                
-                        <button type="submit">Submit</button>
-                    </form>
+                <p class="hc"><ion-icon name="add-circle"></ion-icon> Registration</p><p id="currentDate" style="float: right;"></p>
+                <hr>
+                <br>
+                <div class="register-form">
+                    <label for="registertype">Select Register Type:</label>
+                    <select id="registertype" onchange="showInput()">
+                        <option value="">Select Register Type </option>
+                        <option value="Bank">Bank Register</option>
+                        <option value="Customer">Customer Register</option>
+                        <option value="Expensive">Expensive Register</option>
+                        <option value="Company">Company Register</option>
+                        <option value="Supplier">Supplier Register</option>
+                        <option value="Investor">Investor Register</option>
+                        <option value="Profit">Profit Register</option>
+                      </select>
+                      <br>
+                      <hr>
+
+                      <div id="bankregister" class="registerform">
+                        <h1><ion-icon name="server"></ion-icon> Bank Register</h1>
+                        <form id="bankRegistrationForm">
+                            <h2>Bank Registration Form</h2>
+                            <input type="text" id="bankName" placeholder="Bank Name" required>
+                            <input type="text" id="bankBranch" placeholder="Branch" required>
+                            <input type="text" id="accountNumber" placeholder="Account Number" required>
+                            <input type="text" id="ifscCode" placeholder="IFSC Code" required>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                      
+                      <div id="customerregister" class="registerform">
+                       <h1>Customer Register</h1>
+                      </div>
+
+                      <div id="expensiveregister" class="registerform">
+                        <h1>Expensive Register</h1>
+                       </div>
+                      
+                      <div id="companyregister" class="registerform">
+                        <h1>Company Register</h1>
+                      </div>
+
+                      <div id="supplierregister" class="registerform">
+                        <h1>Supplier Register</h1>
+                      </div>
+                      
+                      <div id="investorregister" class="registerform">
+                        <h1>Investor Register</h1>
+                      </div>
+
+                      <div id="profitregister" class="registerform">
+                        <h1>Profit Register</h1>
+                      </div>
+                </div>
+                <div id="bank-register">
+                    Banks
+                </div>
+                <div id="customerregister">
+                    Customer
                 </div>
             </div>
             <div id="report-contents">
@@ -309,6 +467,13 @@
         </div>
     </div>
     <script>
+
+        function showbankregister(){
+            document.getElementById("bank-register").style.display = "block"
+            document.getElementById("customerregister").style.display = "none"
+        }
+
+
         // Display Last Login Details
         document.addEventListener("DOMContentLoaded", function() {
             var lastLoginUsername = localStorage.getItem('lastLoginUsername');
@@ -327,6 +492,7 @@
         var contents = document.getElementById("content");
         var sidebar = document.getElementById("sidebar");
         var exit = document.getElementById("exit");
+        var body = document.getElementById("body");
 
         menushow.onclick = function() {
             sidebar.style.display = "block";
@@ -378,7 +544,7 @@
             document.getElementById("report-contents").style.display = "none";
         }
 
-        function ShowBlock() {
+        function showSupply() {
             document.getElementById("dashboard-contents").style.display = "none";
             document.getElementById("bank-contents").style.display = "none";
             document.getElementById("adjustment-contents").style.display = "none";
@@ -389,7 +555,7 @@
             document.getElementById("report-contents").style.display = "none";
         }
 
-        function ShowStore() {
+        function showInventory() {
             document.getElementById("dashboard-contents").style.display = "none";
             document.getElementById("bank-contents").style.display = "none";
             document.getElementById("adjustment-contents").style.display = "none";
@@ -432,29 +598,106 @@
             document.getElementById("register-contents").style.display = "none";
             document.getElementById("report-contents").style.display = "block";
         }
-        function showBalances(){
-            document.getElementById("balances").style.display = "block";
-            document.getElementById("transactions").style.display = "none";
+        
+        function ShowBalances(){
+            document.getElementById("balancescontent").style.display = "block";
+            document.getElementById("salesummarycontent").style.display = "none";
+            document.getElementById("transummarycontent").style.display = "none";
+            document.getElementById("deliverycontent").style.display = "none";
+            document.getElementById("transportationcontent").style.display = "none";
         }
-        function ShowTransaction(){
-            document.getElementById("balances").style.display = "none";
-            document.getElementById("transactions").style.display = "block";
+        function ShowSalesummary(){
+            document.getElementById("balancescontent").style.display = "none";
+            document.getElementById("salesummarycontent").style.display = "block";
+            document.getElementById("transummarycontent").style.display = "none";
+            document.getElementById("deliverycontent").style.display = "none";
+            document.getElementById("transportationcontent").style.display = "none";
+        }
+        function Showtransummary(){
+            document.getElementById("balancescontent").style.display = "none";
+            document.getElementById("salesummarycontent").style.display = "none";
+            document.getElementById("transummarycontent").style.display = "block";
+            document.getElementById("deliverycontent").style.display = "none";
+            document.getElementById("transportationcontent").style.display = "none";
+        }
+        function Showdelivery(){
+            document.getElementById("balancescontent").style.display = "none";
+            document.getElementById("salesummarycontent").style.display = "none";
+            document.getElementById("transummarycontent").style.display = "none";
+            document.getElementById("deliverycontent").style.display = "block";
+            document.getElementById("transportationcontent").style.display = "none";
+        }
+        function Showtransportation(){
+            document.getElementById("balancescontent").style.display = "none";
+            document.getElementById("salesummarycontent").style.display = "none";
+            document.getElementById("transummarycontent").style.display = "none";
+            document.getElementById("deliverycontent").style.display = "none";
+            document.getElementById("transportationcontent").style.display = "block";
+        }
+        function Closealltab(){
+            document.getElementById("balancescontent").style.display = "none";
+            document.getElementById("salesummarycontent").style.display = "none";
+            document.getElementById("transummarycontent").style.display = "none";
+            document.getElementById("deliverycontent").style.display = "none";
+            document.getElementById("transportationcontent").style.display = "none";
         }
 
+                function showInput() {
+        var selectBox = document.getElementById("registertype");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        
+        // Hide all input containers
+        var inputs = document.getElementsByClassName("registerform");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].style.display = "none";
+        }
+        
+        // Show the selected input container based on the value
+        if (selectedValue === "Bank") {
+            document.getElementById("bankregister").style.display = "block";
+        } else if (selectedValue === "Customer") {
+            document.getElementById("customerregister").style.display = "block";
+        } else if (selectedValue === "Expensive") {
+            document.getElementById("expensiveregister").style.display = "block";
+        } else if (selectedValue === "Company") {
+            document.getElementById("companyregister").style.display = "block";
+        } else if (selectedValue === "Supplier") {
+            document.getElementById("supplierregister").style.display = "block";
+        } else if (selectedValue === "Investor") {
+            document.getElementById("investorregister").style.display = "block";
+        } else if (selectedValue === "Profit") {
+            document.getElementById("profitregister").style.display = "block";
+        }
+        }
 
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        document.getElementById('bankRegistrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        var username = document.getElementById('name').value;
-        var email = document.getElementById('amount').value;
-        var department = document.getElementById('bank').value;
+            // Get form values
+            const bankName = document.getElementById('bankName').value;
+            const bankBranch = document.getElementById('bankBranch').value;
+            const accountNumber = document.getElementById('accountNumber').value;
+            const ifscCode = document.getElementById('ifscCode').value;
 
-        document.getElementById('account-name').innerText = username;
-        document.getElementById('amount').innerText = email;
-        document.getElementById('bank-name').innerText =  department;
-    });
+            // Display SweetAlert
+            swal({
+                title: "Success!",
+                text: "Bank registration completed successfully.",
+                icon: "success",
+                button: "OK"
+            });
 
+            // Display the details in the details container
+            const bankDetails = document.getElementById('bankDetails');
+            const detailsHTML = `
+                <p>${bankName} &nbsp;&nbsp; <i style="color: #ccc;">(${bankBranch})</i> &nbsp;&nbsp; ${accountNumber} &nbsp;&nbsp; <b style="color: blue;">${ifscCode}</b> </p>
+                <hr>
+            `;
+            bankDetails.innerHTML += detailsHTML;
 
+            // Reset the form
+            document.getElementById('bankRegistrationForm').reset();
+        });
     </script>
 </body>
 </html>
