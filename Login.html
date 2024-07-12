@@ -3,232 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMFCO Block Industry</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="logo.png">
-     <!-- Include SweetAlert2 from CDN -->
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<style>
-    /* CSS styles as per your existing setup */
-    /* Start */
-    body, html {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#preloader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: #fff; /* Change to your desired background color */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Ensures it stays on top */
-}
-
-#preloader img {
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
-}
-.centered-div {
-    width: 500px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    border: 2px solid #ccc;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-#logo{
-    border-radius: 10px;
-    height: 120px;
-    border: 1px dotted #ccc;
-}
-h1{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    text-align: center;
-    color: #124341;
-}
-h2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    color: #081744;
-}
-label{
-    font-size: 18px;
-    font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #081744;
-}
-select{
-    padding: 7px;
-    margin-bottom: 10px;
-    margin-left: 1%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 18px;
-    width: 98%;
-    color: #135d42;
-}
-#username, #password{
-    padding: 7px;
-    color: #135d42;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 18px;
-    width: 96%;
-}
-#btn{
-    padding: 5px;
-    width: 200px;
-    font-size: 18px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: #135d42;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-}
-#btn:hover{
-    background-color: #081744;
-    transition: 0.5s;
-}
-a{
-    text-decoration: none;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-a:hover{
-    text-decoration: underline;
-}
-footer{
-    font-size: 13px;
-    color: #787070;
-    text-align: center;
-}
-footer > a{
-    color: #443e3e;
-}
-#result{
-    text-align: center;
-    font-size: 18px;
-    color: #135d42;
-}
-</style>
-<body>
-    <div id="preloader">
-        <img src="logo.png" alt="Loading...">
-    </div>
-    <div class="centered-div" id="content" style="display: none;">
-        <center><img src="logo.png" id="logo" alt="logo"></center>
-        <h1>AMFCO Block Industry</h1>
-        <h2>Login</h2>
-        <i style="font-weight: bold;">for official use only.</i>
-        <i style="font-family: Georgia, 'Times New Roman', Times, serif; float: right;">AMFCO Software Version 2.1 (V).</i>
-        <hr>
-        <br>
-        <div class="forms">
-            <label for="department"><ion-icon name="layers"></ion-icon> Department</label>
-            <br>
-            <select name="department" id="department" required>
-                <option value="">Select your department</option>
-                <option value="Admin">Admin</option>
-                <option value="Subadmin">Subadmin</option>
-                <option value="Sales">Sales</option>
-            </select>
-        </div>
-        <div class="forms">
-            <label for="username"><ion-icon name="person-circle"></ion-icon> Username</label>
-            <br>
-            <input type="text" name="username" id="username" placeholder="Username" required>
-        </div>
-        <div class="forms">
-            <label for="password"><ion-icon name="lock-closed"></ion-icon> Password</label>
-            <br>
-            <input type="password" name="password" id="password" placeholder="Password" required>
-        </div>
-        <button onclick="Login()" id="btn">Login</button>
-        <span style="float: right; margin-top: 5px; margin-left: 5px;">Keep Me Logged In</span>
-        <input type="checkbox" name="remember-me" id="remember-me" style="float: right; margin-top: 8px;">
-        <p id="result"></p>
-        <br>
-        <a href="https://wa.me/+2348064381174?text=Hello+Sir!+I+forgot+my+login+details+for+AMFCO+Block+Industry!">Forgot my details!</a>
-        <br><br><br>
-        <footer>
-            Copyright&copy; <b>AMFCO Block Industry 2024.</b> Powered by <a href="https://wa.me/+2347046245050?text=Hello+Sir!">Mahadi Abubakar Mujahid</a>
-        </footer>
-    </div>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Wait for 1 second before hiding the preloader for demonstration
-            setTimeout(function() {
-                // Hide the preloader
-                document.getElementById('preloader').style.display = 'none';
-                // Show the main content
-                document.getElementById('content').style.display = 'block';
-            }, 1000); // 1000 milliseconds = 1 second (adjust as needed)
-        });
-    
-        function Login() {
-            var department = document.getElementById('department').value;
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-    
-            // Basic authentication check
-            var validLogin = false;
-    
-            if (department === 'Admin' && username === 'Aliyu' && password === '1234') {
-                validLogin = true;
-            } else if (department === 'Subadmin' && username === 'musaddiq' && password === '4321') {
-                validLogin = true;
-            } else if (department === 'Sales' && username === 'musaddiq' && password === '4321') {
-                validLogin = true;
+    <title>A.A Mujaheed Global Enterprises</title>
+    <link rel="icon" href="Logo.jpg">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            text-align: center;
+        }
+        .login-container > h1 {
+            font-size: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(135, 155, 43);
+        }
+        .form-input {
+            margin-top: 10px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-size: 18px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+        }
+        input {
+            width: 95%;
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 17px;
+        }
+        input:focus {
+            border-color: #888;
+            outline: none;
+        }
+        button {
+            padding: 7px;
+            width: 200px;
+            font-size: 17px;
+            color: #fff;
+            margin: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            background-color: rgb(135, 155, 43);
+        }
+        button:hover {
+            background-color: rgb(76, 87, 24);
+        }
+        .loader {
+            display: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
             }
-    
-            if (validLogin) {
-                // Save login information to local storage
-                localStorage.setItem('lastLoginDepartment', department);
-                localStorage.setItem('lastLoginUsername', username);
-                localStorage.setItem('lastLoginTime', new Date().toLocaleString());
-    
-                // Display SweetAlert for successful login
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Welcome!',
-                    text: `Welcome back, ${username}! You are now logged in.`,
-                    confirmButtonText: 'Proceed',
-                    allowOutsideClick: false
-                }).then((result) => {
-                    // Redirect to the corresponding dashboard
-                    if (result.isConfirmed) {
-                        window.location.href = department + "Dashboard.html";
-                    }
-                });
-            } else {
-                // Display SweetAlert for incorrect login
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Login Failed',
-                    text: 'Incorrect username or password. Please try again.',
-                    confirmButtonText: 'OK',
-                    allowOutsideClick: false
-                });
+            100% {
+                transform: rotate(360deg);
             }
         }
+        .loader img {
+            animation: rotate 2s linear infinite;
+        }
+        #forgot{
+            float: right;
+            color: red;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        .footer{
+            text-align: center;
+            color: #a4a3a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <center><img src="Logo.jpg" alt="logo" height="100" style="border-radius: 10px;"></center>
+        <h1>A.A Mujaheed Global Enterprises</h1>
+        <p id="det"><span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bold;font-style: italic;float: left;">Official use only.</span><br><span style="float: right;font-family: Georgia, 'Times New Roman', Times, serif;">A.A Mujaheed Software Version 2.1 V</span></p>
+        <hr style="border: 1.5px solid rgb(135, 155, 43);">
+        <br>
+        <form onsubmit="login(event)">
+            <div class="form-input">
+                <label for="username"><ion-icon name="person-circle"></ion-icon> Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" aria-label="Username">
+            </div>
+            <div class="form-input">
+                <label for="password"><ion-icon name="lock-closed"></ion-icon> Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" aria-label="Password">
+            </div>
+            <center><button type="submit" id="loginBtn">LOGIN <ion-icon name="arrow-forward-circle"></ion-icon></button></center>
+        </form>
+        <div class="loader" id="loader" title="loader"><img src="Logo.jpg" alt="logo" height="50"></div>
+        <p id="forgot">Forgot your info? &nbsp;<a href="https://wa.me/+2348069594220?text=Hello+Sir+I+Forgot+My+Login+Info">Reset</a></p>
+        <br><br>
+        <div class="footer">
+            Copyright&copy; A.A Mujaheed Global Ent. 2024
+        </div>
+    </div>
+    <!-- Ionicons JavaScript -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- SweetAlert JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function login(event) {
+            event.preventDefault(); // Prevent form from submitting the default way
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loader = document.getElementById('loader');
+            
+            loader.style.display = 'block'; // Show loader
+            
+            // Simulate an API call (use setTimeout to mimic network delay)
+            setTimeout(() => {
+                loader.style.display = 'none'; // Hide loader
+                
+                // Dummy validation logic
+                if (username === 'Mahadi' && password === 'Mahadi12') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successful',
+                        text: 'You Have Successfully login to Subadmin Dashboard, ',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Redirect or perform another action
+                        window.location.href = 'Dashboard.html'; // Redirect to a dashboard page
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Failed',
+                        text: 'Invalid username or password. Please try again.',
+                        confirmButtonText: 'Retry'
+                    });
+                }
+            }, 2000); // Simulate 2 seconds delay
+        }
     </script>
-    
 </body>
 </html>
