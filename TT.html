@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truck Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+    }
+
+    .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-list li {
+        padding: 15px;
+        cursor: pointer;
+        margin: 0 10px;
+    }
+
+    .nav-list li:hover {
+        background-color: #555;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .content-section {
+        display: none;
+    }
+
+    .content-section.active {
+        display: block;
+    }
+
+    form label {
+        display: block;
+        margin: 15px 0 5px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    form input, form select, form button {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    form button {
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background-color: #555;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="header">
+        <ul class="nav-list">
+            <li id="home">Home</li>
+            <li id="setup-truck">Setup Truck</li>
+            <li id="sold-truck">Sold Truck</li>
+            <li id="report">Report</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div id="home-content" class="content-section">
+            <h1>Home</h1>
+            <table id="truck-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Vehicle Number</th>
+                        <th>Driver Phone</th>
+                        <th>Goods Quantity</th>
+                        <th>Product</th>
+                        <th>Ship From</th>
+                        <th>Ship To</th>
+                        <th>Transporter</th>
+                        <th>Advance Money</th>
+                        <th>Remaining Balance</th>
+                        <th>Goods Owner</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Truck data will be appended here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="setup-truck-content" class="content-section">
+            <h1>Setup Truck</h1>
+            <form id="setup-truck-form">
+                <!-- Form fields for truck details -->
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required><br>
+                <label for="vehicle-number">Vehicle Number:</label>
+                <input type="text" id="vehicle-number" name="vehicle-number" required><br>
+                <label for="driver-phone">Driver Phone Number:</label>
+                <input type="text" id="driver-phone" name="driver-phone" required><br>
+                <label for="goods-quantity">Goods Quantity:</label>
+                <input type="number" id="goods-quantity" name="goods-quantity" required><br>
+                <label for="product">Product:</label>
+                <input type="text" id="product" name="product" required><br>
+                <label for="ship-from">Ship From:</label>
+                <input type="text" id="ship-from" name="ship-from" required><br>
+                <label for="ship-to">Ship To:</label>
+                <input type="text" id="ship-to" name="ship-to" required><br>
+                <label for="transporter">Transporter:</label>
+                <input type="text" id="transporter" name="transporter" required><br>
+                <label for="advance-money">Advance Money:</label>
+                <input type="number" id="advance-money" name="advance-money" required><br>
+                <label for="remaining-balance">Remaining Balance:</label>
+                <input type="number" id="remaining-balance" name="remaining-balance" required><br>
+                <label for="goods-owner">Goods Owner:</label>
+                <input type="text" id="goods-owner" name="goods-owner" required><br>
+                <button type="submit">Set Truck</button>
+            </form>
+        </div>
+        <div id="sold-truck-content" class="content-section">
+            <h1>Sold Truck</h1>
+            <form id="sold-truck-form">
+                <label for="sold-date">Date:</label>
+                <input type="date" id="sold-date" name="sold-date" required><br>
+                <label for="select-truck">Select Truck:</label>
+                <select id="select-truck" name="select-truck" required></select><br>
+                <button type="submit">Sell Truck</button>
+            </form>
+        </div>
+        <div id="report-content" class="content-section">
+            <h1>Report</h1>
+            <form id="report-form">
+                <label for="report-date">Date:</label>
+                <input type="date" id="report-date" name="report-date" required><br>
+                <button type="submit">Generate Report</button>
+            </form>
+            <div id="report-list"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navItems = document.querySelectorAll(".nav-list li");
+        const contentSections = document.querySelectorAll(".content-section");
+
+        navItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const sectionId = `${item.id}-content`;
+                contentSections.forEach(section => {
+                    section.classList.remove("active");
+                });
+                document.getElementById(sectionId).classList.add("active");
+            });
+        });
+
+        const truckList = JSON.parse(localStorage.getItem("truckList")) || [];
+        const soldTrucks = JSON.parse(localStorage.getItem("soldTrucks")) || [];
+
+        const setupTruckForm = document.getElementById("setup-truck-form");
+        setupTruckForm.addEventListener("submit", event => {
+            event.preventDefault();
+            const truckData = new FormData(setupTruckForm);
+            const truck = Object.fromEntries(truckData.entries());
+
+            Swal.fire({
+                title: `Are you sure you want to set ${truck["vehicle-number"]}?`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, set it!"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    truckList.push(truck);
+                    localStorage.setItem("truckList", JSON.stringify(truckList));
+                    updateTruckTable();
+                    Swal.fire("Success", "Truck has been set", "success");
+                    setupTruckForm.reset();
+                    document.getElementById("home").click();
+                }
+            });
+        });
+
+        function updateTruckTable() {
+            const truckTableBody = document.querySelector("#truck-table tbody");
+            truckTableBody.innerHTML = "";
+            truckList.forEach((truck, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${truck.date}</td>
+                    <td>${truck["vehicle-number"]}</td>
+                    <td>${truck["driver-phone"]}</td>
+                    <td>${truck["goods-quantity"]}</td>
+                    <td>${truck.product}</td>
+                    <td>${truck["ship-from"]}</td>
+                    <td>${truck["ship-to"]}</td>
+                    <td>${truck.transporter}</td>
+                    <td>${truck["advance-money"]}</td>
+                    <td>${truck["remaining-balance"]}</td>
+                    <td>${truck["goods-owner"]}</td>
+                    <td>
+                        <button class="edit-truck" style="background-color: blue; color: #fff;border:1px solid #fff;padding:5px;border-radius:5px;cursor:pointer;" data-index="${index}">Edit</button>
+                        <button class="delete-truck" style="background-color: red; color: #fff;border:1px solid #fff;padding:5px;border-radius:5px;cursor:pointer;" data-index="${index}">Delete</button>
+                    </td>
+                `;
+                truckTableBody.appendChild(row);
+            });
+
+            document.querySelectorAll(".edit-truck").forEach(button => {
+                button.addEventListener("click", event => {
+                    const index = event.target.dataset.index;
+                    editTruck(index);
+                });
+            });
+
+            document.querySelectorAll(".delete-truck").forEach(button => {
+                button.addEventListener("click", event => {
+                    const index = event.target.dataset.index;
+                    deleteTruck(index);
+                });
+            });
+
+            const selectTruck = document.getElementById("select-truck");
+            selectTruck.innerHTML = "";
+            truckList.forEach((truck, index) => {
+                const option = document.createElement("option");
+                option.value = index;
+                option.textContent = truck["vehicle-number"];
+                selectTruck.appendChild(option);
+            });
+        }
+
+        function editTruck(index) {
+            const truck = truckList[index];
+            const setupTruckForm = document.getElementById("setup-truck-form");
+            Object.keys(truck).forEach(key => {
+                setupTruckForm.elements[key].value = truck[key];
+            });
+            deleteTruck(index);
+        }
+
+        function deleteTruck(index) {
+            truckList.splice(index, 1);
+            localStorage.setItem("truckList", JSON.stringify(truckList));
+            updateTruckTable();
+        }
+
+        const soldTruckForm = document.getElementById("sold-truck-form");
+        soldTruckForm.addEventListener("submit", event => {
+            event.preventDefault();
+            const soldData = new FormData(soldTruckForm);
+            const soldDate = soldData.get("sold-date");
+            const truckIndex = soldData.get("select-truck");
+            const truck = truckList[truckIndex];
+
+            Swal.fire({
+                title: `Are you sure you want to sell ${truck["vehicle-number"]} of ${truck["goods-quantity"]}?`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, sell it!"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    soldTrucks.push({ ...truck, soldDate });
+                    truckList.splice(truckIndex, 1);
+                    localStorage.setItem("truckList", JSON.stringify(truckList));
+                    localStorage.setItem("soldTrucks", JSON.stringify(soldTrucks));
+                    updateTruckTable();
+                    Swal.fire("Success", "Truck has been sold", "success");
+                    soldTruckForm.reset();
+                }
+            });
+        });
+
+        const reportForm = document.getElementById("report-form");
+        reportForm.addEventListener("submit", event => {
+            event.preventDefault();
+            const reportData = new FormData(reportForm);
+            const reportDate = reportData.get("report-date");
+            const reportList = document.getElementById("report-list");
+            reportList.innerHTML = "";
+
+            const trucksOnDate = soldTrucks.filter(truck => truck.soldDate === reportDate);
+            if (trucksOnDate.length === 0) {
+                reportList.textContent = "No trucks found for this date.";
+            } else {
+                trucksOnDate.forEach(truck => {
+                    const reportItem = document.createElement("div");
+                    reportItem.classList.add("report-item");
+                    reportItem.textContent = `Vehicle Number: ${truck["vehicle-number"]}, Quantity: ${truck["goods-quantity"]}`;
+                    reportList.appendChild(reportItem);
+                });
+            }
+        });
+
+        updateTruckTable();
+        document.getElementById("home").click();
+    });
+</script>
+</html>
