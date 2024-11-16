@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMFCO FERT & CHEM LTD</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: "Host Grotesk", sans-serif;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+}
+.header .image img{
+    height: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+.header .list li{
+    cursor: pointer;
+    align-items: center;
+    display: inline;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 5px;
+    margin: -10px 15px;
+}
+.header .list li span{
+    padding: 5px;
+}
+.header .list li span:hover{
+    color: red;
+    border-radius: 7px;
+    border: 2px solid red;
+}
+.header .list li span{
+    font-size: 35px;
+}
+#active{
+    color: red;
+    border-radius: 7px;
+    border: 2px solid red;
+}
+.content{
+    background-color: rgb(237, 246, 247);
+    margin-top: 85px;
+    padding: 10px;
+}
+.row{
+    display: inline-flex;
+    width: 100%;
+}
+.row .modal{
+    width: 48%;
+    padding: 10px;
+    height: 45vh;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.modal .modal-header{
+    display: flex;
+    justify-content: space-around;
+}
+.modal-header input{
+    width: 400px;
+    padding: 7px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+}
+.modal-header .sort{
+    align-items: center;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #8f8e8e;
+}
+.modal-header button{
+    width: 200px;
+    border: none;
+    background-color: rgb(12, 87, 12);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+.modal li{
+    list-style: none;
+    padding: 10px;
+    margin-left: 30px;
+    width: 825px;
+    font-size: 20px;
+    margin-bottom: 7px;
+    align-items: center;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+</style>
+<body>
+<div class="header">
+        <div class="image">
+            <img src="logo 1.png" alt="logo">
+        </div>
+        <div class="list">
+            <ul>
+                <li onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">home</span></li>
+                <li onclick="window.location.href='balances.html'"><span class="material-symbols-outlined" id="active">balance</span> Balances</li>
+                <li onclick="window.location.href='account.html'"><span class="material-symbols-outlined">assured_workload</span></li>
+                <li onclick="window.location.href='investment.html'"><span class="material-symbols-outlined">finance_mode</span></li>
+                <li onclick="window.location.href='supply.php'"><span class="material-symbols-outlined">shopping_cart</span></li>
+                <li onclick="window.location.href='delivery.php'"><span class="material-symbols-outlined">deployed_code</span></li>
+                <li onclick="window.location.href='registration.php'"><span class="material-symbols-outlined">folder_open</span></li>
+                <li onclick="window.location.href='report.php'"><span class="material-symbols-outlined">cloud_done</span></li>
+                <li onclick="window.location.href='index.php'"><span class="material-symbols-outlined">logout</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <h1 style="margin: 10px;font-size: 23px;"> General Balances on <?php echo $Current_date ?>.</h1>
+          <br>
+          <div class="row">
+            <div class="modal">
+                <div class="modal-header">
+                    <input type="search" name="search_bank" id="search_bank" placeholder="Search Bank" oninput="filterBank()">
+                    <div class="sort">
+                        <p>Sort By: -- -- -- </p>
+                    </div>
+                    <button>Add Bank</button>
+                </div>
+                <br>
+                <ul id="bank-list">
+                <li><span class="bank-icon"><img src="access.png" alt="access" height="25"></span> &nbsp;&nbsp;1. Access Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(AMFCO Fertilizer & Chemicals Limited)</em></small> <span style="color: green;float: right;">₦790</span></li>
+                <li><span class="bank-icon"><img src="logo 1.png" alt="amfco" height="25"></span> &nbsp;&nbsp;2. Cash Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(AMFCO Fertilizer & Chemicals Limited)</em></small> <span style="color: green;float: right;">₦2,700</span></li>
+                <li><span class="bank-icon"><img src="fcmb.png" alt="fcmb" height="25"></span> &nbsp;&nbsp;3. FCMB Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(Aliyu Abubakar Mujahid)</em></small> <span style="color: green;float: right;">₦0</span></li>
+                <li><span class="bank-icon"><img src="jaiz.jpg" alt="jaiz" height="25"></span> &nbsp;&nbsp;4. Jaiz Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(Aliyu Abubakar Mujahid)</em></small> <span style="color: green;float: right;">₦18,498.69</span></li>
+                <li><span class="bank-icon"><img src="sterling.png" alt="jaiz" height="25"></span> &nbsp;&nbsp;5. Sterling Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(Aliyu Abubakar Mujahid)</em></small> <span style="color: green;float: right;">₦3.27</span></li>
+                <li><span class="bank-icon"><img src="taj.png" alt="taj" height="25"></span> &nbsp;&nbsp;6. TAJ Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(AMFCO Fertilizer & Chemicals Limited)</em></small> <span style="color: green;float: right;">₦2,700</span></li>
+                </ul>
+            </div>
+            <div class="modal">
+                <div class="modal-header">
+                    <input type="search" name="search_customer" id="search_customer" placeholder="Search Customer" oninput="filterCustomer()">
+                    <div class="sort">
+                        <p>Sort By: -- -- -- </p>
+                    </div>
+                    <button>Add Customer</button>
+                </div>
+                <br>
+                <ul id="customer-list">
+                <li><span class="icon"><img src="a a mujaheed.jpg" alt="a a mujaheed" height="25"></span> &nbsp;&nbsp;1. A.A Mujaheed Global Enterprises <small style="color: #6d6b6b;font-style: italic;"><em>(No C3 Al-ameen Shopping Mall Ltd)</em></small> <span style="color: red;float: right;">-₦340</span></li>
+                <li><span class="icon"><img src="logo 1.png" alt="amfco" height="25"></span> &nbsp;&nbsp;2. Amfco Fertilizer & Chemicals Ltd <small style="color: #6d6b6b;font-style: italic;"><em>(Company Expenses)</em></small> <span style="color: red;float: right;">-₦68.4</span></li>
+                <li><span class="icon"><img src="logo 1.png" alt="amfco" height="25"></span> &nbsp;&nbsp;3. Amfco Fertilizer & Chemicals Ltd <small style="color: #6d6b6b;font-style: italic;"><em>(CEO Expenses)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                <li><span class="icon"><img src="haqqy.jpg" alt="haqqy" height="25"></span> &nbsp;&nbsp;4. HAQQY Integrated Services <small style="color: #6d6b6b;font-style: italic;"><em>(No C3 Al-ameen Shopping Mall Ltd)</em></small> <span style="color: green;float: right;">₦54.4</span></li>
+                <li><span class="icon"><img src="iadr.jpg" alt="iadr" height="25"></span> &nbsp;&nbsp;5. IADR Zaria Investment Limited <small style="color: #6d6b6b;font-style: italic;"><em>(No 18 Park road pz, zaria)</em></small> <span style="color: green;float: right;">₦6.4</span></li>
+                </ul>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="modal">
+                <div class="modal-header">
+                    <input type="search" name="search_dependent" id="search_dependent" placeholder="Search Dependent & Independent Supplier" oninput="filterHouse()">
+                    <div class="sort">
+                        <p>Sort By: -- -- -- </p>
+                    </div>
+                    <button>Add House Supplier</button>
+                </div>
+                <br>
+                <ul id="house-supplier-list">
+                <li><span class="bank-icon"><img src="unknown.webp" alt="alh ibrahim" height="25"></span> &nbsp;&nbsp;1. Alh Ibrahim Sarki <small style="color: #6d6b6b;font-style: italic;"><em>(Dependent supplier)</em></small> <span style="color: green;float: right;">₦790</span></li>     
+                <li><span class="icon"><img src="logo 1.png" alt="amfco" height="25"></span> &nbsp;&nbsp;2. Amfco Fertilizer & Chemicals Ltd <small style="color: #6d6b6b;font-style: italic;"><em>(Offload grains)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                </ul>
+            </div>
+            <div class="modal">
+                <div class="modal-header">
+                    <input type="search" name="search_percentage" id="search_percentage" placeholder="Search Percentage" oninput="filterPercentage()">
+                    <div class="sort">
+                        <p>Sort By: -- -- -- </p>
+                    </div>
+                    <button>Add Percentager</button>
+                </div>
+                <br>
+                <ul id="percentage-list">
+                <li><span class="bank-icon"><img src="unknown.webp" alt="alh ibrahim" height="25"></span> &nbsp;&nbsp;1. Alh Ibrahim Sarki <small style="color: #6d6b6b;font-style: italic;"><em>(100 bags)</em></small> <span style="color: green;float: right;">₦200,000</span></li>     
+                </ul>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="modal">
+                <div class="modal-header">
+                    <input type="search" name="search_company" id="search_company" placeholder="Search Company" oninput="filterCompanies()">
+                    <div class="sort">
+                        <p>Sort By: -- -- -- </p>
+                    </div>
+                    <button>Add Company</button>
+                </div>
+                <br>
+                <ul id="company-list">
+                <li><span class="bank-icon"><img src="a a mujaheed.jpg" alt="a a mujaheed" height="25"></span> &nbsp;&nbsp;1. A.A Mujaheed Global Enterprises <small style="color: #6d6b6b;font-style: italic;"><em>(North Branch)</em></small> <span style="color: green;float: right;">₦790</span></li>     
+                <li><span class="icon"><img src="haqqy.jpg" alt="haqqy" height="25"></span> &nbsp;&nbsp;2. HAQQY Integrated Services <small style="color: #6d6b6b;font-style: italic;"><em>(East Branch)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                <li><span class="icon"><img src="hybrid.jpg" alt="hybrid" height="25"></span> &nbsp;&nbsp;3. Hybrid Feeds Limited <small style="color: #6d6b6b;font-style: italic;"><em>(North Branch)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                <li><span class="icon"><img src="iadr.jpg" alt="iadr" height="25"></span> &nbsp;&nbsp;4. IADR Zaria Investment Limited <small style="color: #6d6b6b;font-style: italic;"><em>(West Branch)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                </ul>
+            </div>
+            <div class="modal">
+                <div class="modal-header">
+                    <input type="search" name="search_supplier" id="search_supplier" placeholder="Search Supplier" oninput="filterSuppliers()">
+                    <div class="sort">
+                        <p>Sort By: -- -- -- </p>
+                    </div>
+                    <button>Add Supplier</button>
+                </div>
+                <br>
+                <ul id="supplier-list">
+                <li><span class="bank-icon"><img src="a a mujaheed.jpg" alt="a a mujaheed" height="25"></span> &nbsp;&nbsp;1. A.A Mujaheed Global Enterprises <small style="color: #6d6b6b;font-style: italic;"><em>(Kano)</em></small> <span style="color: green;float: right;">₦790</span></li>     
+                <li><span class="icon"><img src="dangote.png" alt="dangote" height="25"></span> &nbsp;&nbsp;2. Dangote Fertilizer <small style="color: #6d6b6b;font-style: italic;"><em>(Rivers)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                <li><span class="icon"><img src="haqqy.jpg" alt="haqqy" height="25"></span> &nbsp;&nbsp;3. HAQQY Integrated Services <small style="color: #6d6b6b;font-style: italic;"><em>(Kaduna)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>
+                <li><span class="icon"><img src="iadr.jpg" alt="iadr" height="25"></span> &nbsp;&nbsp;4. IADR Zaria Investment Limited <small style="color: #6d6b6b;font-style: italic;"><em>(Port Harcourt)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>   
+                <li><span class="icon"><img src="indorama.jpg" alt="indorama" height="25"></span> &nbsp;&nbsp;5. Indorama Eleme Fertilizer <small style="color: #6d6b6b;font-style: italic;"><em>(Port Harcourt)</em></small> <span style="color: green;float: right;">₦68,000.4</span></li>          
+                </ul>
+            </div>         
+            </div>
+            <div class="row" style="display: flex;justify-content: center;">
+                <div class="modal">
+                    <div class="modal-header" style="justify-content: left;">
+                        <input type="search" name="search_bank" id="search_asset" placeholder="Search Asset" oninput="filterAsset()" style="margin-left: 30px;">
+                    </div>
+                    <br>
+                    <ul id="asset-list">
+                    <li>&nbsp;&nbsp;1. Total Bank Balances <span style="color: green;float: right;">₦790 <span style="color: red;">(-₦0)</span></span></li>
+                    <li>&nbsp;&nbsp;2. Total Customer Balances.  <span style="color: green;float: right;">₦1,880 <span style="color: red;">(-₦400)</span></span></li>
+                    <li>&nbsp;&nbsp;3. Total House Supplier Balances.  <span style="color: green;float: right;">₦0 <span style="color: red;">(-₦0)</span></span></li>
+                    <li>&nbsp;&nbsp;4. Total Dependent Percentage Balances .  <span style="color: green;float: right;">₦110 <span style="color: red;">(-₦10)</span></span></li>
+                    <li>&nbsp;&nbsp;5. Total Company Balances. <span style="color: green;float: right;">₦70 <span style="color: red;">(-₦20)</span></span></li>
+                    <li>&nbsp;&nbsp;6. Total Supplier Balances.  <span style="color: green;float: right;">₦790 <span style="color: red;">(-₦0)</span></span></li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+    </div>
+    <script src="js/balances.js"></script>
+    <script>
+        function filterSuppliers() {
+    const searchInput = document.getElementById('search_supplier').value.toLowerCase();
+    const suppliers = document.querySelectorAll('#supplier-list li');
+
+    suppliers.forEach(supplier => {
+        const text = supplier.textContent.toLowerCase();
+        supplier.style.display = text.includes(searchInput) ? '' : 'none';
+    });
+}
+
+function filterCompanies() {
+    const searchInput = document.getElementById('search_company').value.toLowerCase();
+    const suppliers = document.querySelectorAll('#company-list li');
+
+    suppliers.forEach(supplier => {
+        const text = supplier.textContent.toLowerCase();
+        supplier.style.display = text.includes(searchInput) ? '' : 'none';
+    });
+}
+
+function filterHouse(){
+    const search_input = document.getElementById('search_dependent').value.toLowerCase();
+    const houseSupplier = document.querySelectorAll('#house-supplier-list li');
+
+    houseSupplier.forEach(house => {
+        const text = house.textContent.toLowerCase();
+        house.style.display = text.includes(search_input) ? '' : 'none';
+    })
+}
+
+function filterPercentage(){
+    const search_input = document.getElementById("search_percentage").value.toLowerCase();
+    const percentages = document.querySelectorAll("#percentage-list li");
+
+    percentages.forEach(percentage => {
+        const text = percentage.textContent.toLowerCase();
+        percentage.style.display = text.includes(search_input) ? '' : 'none';
+    })
+}
+
+function filterBank(){
+    const search_input = document.getElementById("search_bank").value.toLowerCase();
+    const percentages = document.querySelectorAll("#bank-list li");
+
+    percentages.forEach(percentage => {
+        const text = percentage.textContent.toLowerCase();
+        percentage.style.display = text.includes(search_input) ? '' : 'none';
+    })
+}
+
+function filterCustomer(){
+    const search_input = document.getElementById("search_customer").value.toLowerCase();
+    const percentages = document.querySelectorAll("#customer-list li");
+
+    percentages.forEach(percentage => {
+        const text = percentage.textContent.toLowerCase();
+        percentage.style.display = text.includes(search_input) ? '' : 'none';
+    })
+}
+
+function filterAsset(){
+    const search_input = document.getElementById("search_asset").value.toLowerCase();
+    const percentages = document.querySelectorAll("#asset-list li");
+
+    percentages.forEach(percentage => {
+        const text = percentage.textContent.toLowerCase();
+        percentage.style.display = text.includes(search_input) ? '' : 'none';
+    })
+}
+
+
+    </script>
+</body>
+</html>

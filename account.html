@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMFCO FERT & CHEM LTD</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: "Host Grotesk", sans-serif;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+}
+.header .image img{
+    height: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+.header .list li{
+    cursor: pointer;
+    align-items: center;
+    display: inline;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 5px;
+    margin: -10px 15px;
+}
+.header .list li span{
+    padding: 5px;
+}
+.header .list li span:hover{
+    color: red;
+    border-radius: 7px;
+    border: 2px solid red;
+}
+.header .list li span{
+    font-size: 35px;
+}
+#active{
+    color: red;
+    border-radius: 7px;
+    border: 2px solid red;
+}
+.content{
+    background-color: rgb(237, 246, 247);
+    margin-top: 85px;
+    padding: 10px;
+    height: 88.7lvh;
+}
+.row{
+    display: inline-flex;
+    width: 100%;
+}
+.row .modal{
+    width: 48%;
+    padding: 10px;
+    height: 45vh;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.modal .modal-header{
+    display: flex;
+    justify-content: space-around;
+}
+.modal-header input{
+    width: 400px;
+    padding: 7px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+}
+.modal-header .sort{
+    align-items: center;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #8f8e8e;
+}
+.modal-header button{
+    width: 200px;
+    border: none;
+    background-color: rgb(12, 87, 12);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+.modal li{
+    list-style: none;
+    padding: 10px;
+    margin-left: 30px;
+    width: 825px;
+    font-size: 20px;
+    margin-bottom: 7px;
+    align-items: center;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.bank{
+    margin: 15px;
+}
+.bank table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.bank table thead{
+    background-color: #fff;
+    margin: 10px;
+}
+.bank table thead th{
+    padding: 5px;
+    font-size: 17px;
+    text-align: center;
+    color: #8f8e8e;
+}
+.bank table tr td{
+    padding: 5px;
+    border-bottom: 2px solid #ddd;
+    font-size: 17px;
+    text-align: center;
+}
+table #date, #s-no{
+    font-weight: bold;
+}
+</style>
+<body>
+<div class="header">
+        <div class="image">
+            <img src="logo 1.png" alt="logo">
+        </div>
+        <div class="list">
+            <ul>
+                <li onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined">home</span></li>
+                <li onclick="window.location.href='balances.html'"><span class="material-symbols-outlined">balance</span></li>
+                <li onclick="window.location.href='account.html'"><span class="material-symbols-outlined" id="active">assured_workload</span> Account</li>
+                <li onclick="window.location.href='investment.html'"><span class="material-symbols-outlined">finance_mode</span></li>
+                <li onclick="window.location.href='supply.php'"><span class="material-symbols-outlined">shopping_cart</span></li>
+                <li onclick="window.location.href='delivery.php'"><span class="material-symbols-outlined">deployed_code</span></li>
+                <li onclick="window.location.href='registration.php'"><span class="material-symbols-outlined">folder_open</span></li>
+                <li onclick="window.location.href='report.php'"><span class="material-symbols-outlined">cloud_done</span></li>
+                <li onclick="window.location.href='index.php'"><span class="material-symbols-outlined">logout</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="modal">
+                <div class="modal-header" style="justify-content: left;margin-left: 30px;">
+                    <input type="search" name="search_bank" id="search_bank" placeholder="Search Bank" oninput="filterBank()">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button style="float: right;">Bank Account</button>
+                </div>
+                <br>
+                <ul id="bank-list">
+                <li><span class="bank-icon"><img src="access.png" alt="access" height="25"></span> &nbsp;&nbsp;1. Access Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(AMFCO Fertilizer & Chemicals Limited)</em></small> <span style="color: green;float: right;">₦790</span></li>
+                <li><span class="bank-icon"><img src="logo 1.png" alt="amfco" height="25"></span> &nbsp;&nbsp;2. Cash Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(AMFCO Fertilizer & Chemicals Limited)</em></small> <span style="color: green;float: right;">₦2,700</span></li>
+                <li><span class="bank-icon"><img src="fcmb.png" alt="fcmb" height="25"></span> &nbsp;&nbsp;3. FCMB Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(Aliyu Abubakar Mujahid)</em></small> <span style="color: green;float: right;">₦0</span></li>
+                <li><span class="bank-icon"><img src="jaiz.jpg" alt="jaiz" height="25"></span> &nbsp;&nbsp;4. Jaiz Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(Aliyu Abubakar Mujahid)</em></small> <span style="color: green;float: right;">₦18,498.69</span></li>
+                <li><span class="bank-icon"><img src="sterling.png" alt="jaiz" height="25"></span> &nbsp;&nbsp;5. Sterling Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(Aliyu Abubakar Mujahid)</em></small> <span style="color: green;float: right;">₦3.27</span></li>
+                <li><span class="bank-icon"><img src="taj.png" alt="taj" height="25"></span> &nbsp;&nbsp;6. TAJ Bank Plc. <small style="color: #6d6b6b;font-style: italic;"><em>(AMFCO Fertilizer & Chemicals Limited)</em></small> <span style="color: green;float: right;">₦2,700</span></li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="bank">
+            <table>
+                <tbody>
+                    <thead>
+                        <th style="width: 5%;" id="s/no">S/No</th>
+                        <th style="width: 10%;" id="date">Date</th>
+                        <th style="width: 15%;">Issued by</th>
+                        <th style="width: 47%;">Description</th>
+                        <th>Amount</th>
+                        <th>Discard</th>
+                        <th>Confirm</th>
+                    </thead>
+                    <tr id="bank-transaction">
+                        <td id="s-no">1</td>
+                        <td id="date">15/11/2024</td>
+                        <td>Aliyu Abubakar <small><em>(Admin)</em></small></td>
+                        <td style="text-align: left;"><b>Payment from Customer.</b> From customer: <b>A.A Mujaheed Global Enterprises</b> of <b>$10,000</b> to Account: <b>Access Bank Plc</b> <small><em>(AMFCO Fertilizer & Chemicals Limited).</em></small> Credited by: <small>Abdullahi Abubakar Mujahid</small>.</td>
+                        <th>$10,000</th>
+                        <th><input type="radio" id="discard-btn"></th>
+                        <th><input type="radio" id="confirm-btn"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

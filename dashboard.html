@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMFCO FERT & CHEM LTD</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: "Host Grotesk", sans-serif;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: #fff;
+}
+.header .image img{
+    height: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+.header .list li{
+    cursor: pointer;
+    align-items: center;
+    display: inline;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 5px;
+    margin: -10px 15px;
+}
+.header .list li span{
+    padding: 5px;
+}
+.header .list li span:hover{
+    color: red;
+    border-radius: 7px;
+    border: 2px solid red;
+}
+.header .list li span{
+    font-size: 35px;
+}
+#active{
+    color: red;
+    border-radius: 7px;
+    border: 2px solid red;
+}
+.content{
+    background-color: rgb(237, 246, 247);
+    margin-top: 85px;
+    padding: 10px;
+    height: 88.8lvh;
+}
+.row-1{
+    display: flex;
+    justify-content: center;
+}
+.row-1 .box{
+    display: inline-block;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgb(0, 0, 0.5);
+    min-width: 250px;
+    margin: 15px;
+}
+.row-1 .box .box-header{
+    display: flex;
+    justify-content: space-between;
+}
+.row-1 .box .box-header small{
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: green;
+    font-size: 17px;
+}
+.row-1 .box .box-header span{
+    font-size: 30px;
+}
+.row-1 .box p{
+    color: #acaaaa;
+    font-size: 17px;
+    font-weight: bold;
+}
+.row-1 .box h1{
+    font-size: 25px;
+    text-shadow: 0px 0px 2px darkred;
+}
+.boxes{
+    padding: 7px;
+    background-color: rgb(215, 239, 241);
+    border: 1px solid #ddd;
+    margin: 7px;
+    font-size: 17px;
+    border-radius: 5px;
+    width: 310px;
+}
+.row-2{
+    display: flex;
+    justify-content: center;
+}
+.alt{
+    width: 390px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px;
+}
+.alt p{
+    color: #929090;
+}
+.recent{
+    display: flex;
+    justify-content: center;
+}
+.activities{
+    width: 1370px;
+    padding: 10px 20px;
+}
+.activities h1{
+    font-size: 25px;
+    color: #929090;
+}
+.activities table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.activities table th, td{
+    background-color: #fff;
+    padding: 10px 7px;
+    text-align: center;
+}
+.activities table tbody{
+    border-radius: 5px;
+}
+.overview{
+    height: 3vh;
+    margin: 10px;
+    background: linear-gradient(to right, red 50%, green 50%);
+    border-radius: 5px;
+}
+.overview p li{
+    font-weight: 600;
+}
+@media screen and (max-width: 1350px){
+    .row-1{
+        display: block;
+        justify-content: center;
+        width: 700px;
+    }
+}
+@media screen and (max-width: 1173px){
+    .row-2{
+        display: block;
+    }
+    .row-2 .alt{
+        width: 90%;
+    }
+    .content{
+        height: auto;
+        margin-top: 135px;
+    }
+    .header{
+        display: block;
+    }
+    .list{
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 940px){
+    .list{
+        bottom: 0px;
+        position: fixed;
+        background-color: #fff;
+    }
+    .content{
+        margin-top: 85px;
+        margin-bottom: 70px;
+    }
+}
+@media screen and (max-width: 745px){
+    .row-1{
+        width: 100%;
+    }
+    .row-1 .box{
+        display: block;
+        justify-content: left;
+        width: 50%;
+    }
+    .row-1 .box .boxes{
+        width: 100%;
+    }
+}
+</style>
+<body>
+    <div class="header">
+        <div class="image">
+            <img src="logo 1.png" alt="logo">
+        </div>
+        <div class="list">
+            <ul>
+                <li onclick="window.location.href='dashboard.html'"><span class="material-symbols-outlined" id="active">home</span> &nbsp;Dashboard</li>
+                <li onclick="window.location.href='balances.html'"><span class="material-symbols-outlined">balance</span></li>
+                <li onclick="window.location.href='account.html'"><span class="material-symbols-outlined">assured_workload</span></li>
+                <li onclick="window.location.href='investment.html'"><span class="material-symbols-outlined">finance_mode</span></li>
+                <li onclick="window.location.href='supply.php'"><span class="material-symbols-outlined">shopping_cart</span></li>
+                <li onclick="window.location.href='delivery.php'"><span class="material-symbols-outlined">deployed_code</span></li>
+                <li onclick="window.location.href='registration.php'"><span class="material-symbols-outlined">folder_open</span></li>
+                <li onclick="window.location.href='report.php'"><span class="material-symbols-outlined">cloud_done</span></li>
+                <li onclick="window.location.href='index.php'"><span class="material-symbols-outlined">logout</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <center>
+        <div class="row-1">
+            <div class="box">
+                <div class="box-header">
+                    <span class="material-symbols-outlined">attach_money</span>
+                </div>
+                <br>
+                <p style="text-align: left;">Cumulative Bank Balance</p>
+                <h1 style="text-align: left;">$20,000.12</h1>
+            </div>
+            <div class="box" style="background-color: rgb(237, 246, 247);box-shadow: none;">
+                <div class="boxes">
+                    <span style="text-align: left;">10 Bank Account</span>
+                    <span style="float: right;font-weight: bold;font-size: 15px;"> <span style="color: green;">+$30,582</span> |<span style="color: red;"> -$5,012</span></span>
+                </div>
+                <div class="boxes">
+                    <span style="text-align: left;">3 Credit/Debit Note</span>
+                    <span style="float: right;font-weight: bold;"> <span style="color: green;">$977.6</span> |<span style="color: red;"> $0</span></span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    <span class="material-symbols-outlined">shopping_cart</span> <small style="text-decoration: none;color: red;">-12%</small>
+                </div>
+                <br>
+                <p style="text-align: left;">Total Sales</p>
+                <h1 style="text-align: left;">$15,567.76</h1>
+            </div>
+            <div class="box" style="background-color: rgb(237, 246, 247);box-shadow: none;">
+                <div class="boxes">
+                    <span>4 Supply Trucks</span>
+                    <span style="float: right;font-weight: bold;">3,600bags</span>
+                </div>
+                <div class="boxes">
+                    <span>1 Delivery Truck</span>
+                    <span style="float: right;font-weight: bold;">797bags</span>
+                </div>
+            </div>
+        </div>
+        </center>
+        <br><br>
+        <div class="recent">
+            <div class="activities">
+            <h1>Recent Activities...</h1>
+            <br>
+            <table>
+                <tbody>
+                <thead>
+                        <th><input type="radio"></th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Issued by</th>
+                        <th>Category</th>
+                        <th>Remark</th>
+                        <th>Status</th>
+                    </thead>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <br><br>
+        <center>
+        <div class="row-2">
+            <div class="alt mybank">
+                <p style="font-weight: bold;text-align: left;">001 Bank</p>
+                <hr style="border: 1px solid green;">
+                <h3 style="margin-top: 10px;color: green;text-align: center;margin-bottom: -10px;">Current Balance: $18,498.69</h3>
+                <br>
+                <p style="text-align: left;">bank info!</p>
+               <h2><img src="jaiz.jpg" alt="jaiz" height="30"> Jaiz Bank</h2>
+               <p style="text-align: left;">000 **** 000</p>
+               <p style="text-align: left;">Aliyu Abubakar Mujahid</p>
+            </div>
+            <div class="alt">
+                <p style="font-weight: bold;text-align: left;">Clients Overview</p>
+                <hr style="border: 1px solid green;">
+                <div class="overview"></div>
+                <br>
+                <p><li style="font-weight: bold;color: rgba(121, 119, 118, 0.918);margin: 5px;text-align: left;">Clients with credit <span style="float: right;color: #3a3939;"> <span class="material-symbols-outlined">group</span> 164</span></li></span></p>
+                <hr>
+                <p><li style="font-weight: bold;color: rgba(121, 119, 118, 0.918);margin: 5px;text-align: left;">Clients with outstanding balance <span style="float: right;color: #3a3939;">0</span></li></p>
+            </div>
+            <div class="alt">
+                <p style="font-weight: bold;text-align: left;">Total Assets</p>
+                <hr style="border: 1px solid green;">
+                <h1 style="font-size: 25px;margin: 5px;text-align: left;">Total Credit: <span style="color: green;">+$46,784.69</span></h1>
+                <h1 style="font-size: 25px;margin: 5px;text-align: left;">Total Debit: <span style="color: red;">-$46,784.69</span></h1>
+                <h1 style="margin: 10px;text-align: left;">Margin: <span style="text-shadow: 0px 0px 3px darkred;">$0</span></h1>
+            </div>
+        </div>
+        </center>
+    </div>
+</body>
+</html>
